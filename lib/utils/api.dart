@@ -6,6 +6,6 @@ class Api {
   static String fhirRaspirationRateUrl = "${fhirBaseUrl}respiratory-rate";
 
   static String hosmartBaseUrl = "https://hapifhir.hhub.hosmartai.eu/";
-  static String hosmartAccessTokenUrl = "${hosmartBaseUrl}auth/realms/jhub/protocol/openid-connect/token";
+  static String hosmartAccessTokenUrl = "https://hhub.hosmartai.eu/auth/realms/jhub/protocol/openid-connect/token";
   static String hosmartPatientUrl = "${hosmartBaseUrl}fhir/Patient";
 }
