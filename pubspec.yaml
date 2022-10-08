@@ -2,7 +2,7 @@ name: fhir_vidavo
 description: A new Flutter project.
 version: 0.0.1
 author: Vidavo S.A. (Pavlatos Panagiotis)
-homepage:
+homepage: https://github.com/TetrixGauss/fhir_vidavo.git
 
 environment:
   sdk: ">=2.17.6 <3.0.0"
