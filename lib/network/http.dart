@@ -83,11 +83,11 @@ class Http {
       body["timestamp"] = timeStamp;
       late var data;
       if(variable == "heart-rate") {
-        data = await http.post(Uri.parse(Api.fhirHeartRateUrl), headers: headers, body: body);
+        data = await http.post(Uri.parse(Api.fhirHeartRateUrl), headers: headers, body: jsonEncode(body));
       } else if(variable == "respiration-rate") {
-        data = await http.post(Uri.parse(Api.fhirRaspirationRateUrl), headers: headers, body: body);
+        data = await http.post(Uri.parse(Api.fhirRaspirationRateUrl), headers: headers, body: jsonEncode(body));
       } else if(variable == "spo2") {
-        data = await http.post(Uri.parse(Api.fhirSpo2Url), headers: headers, body: body);
+        data = await http.post(Uri.parse(Api.fhirSpo2Url), headers: headers, body: jsonEncode(body));
       }
       try{
         Map<String, dynamic> dataDecoded = jsonDecode(data.body);
