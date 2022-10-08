@@ -20,7 +20,7 @@ User _$UserFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$User {
-  int get id => throw _privateConstructorUsedError;
+// required int id,
   @JsonKey(name: 'access_token')
   String get accessToken => throw _privateConstructorUsedError;
   @JsonKey(name: 'expires_in')
@@ -48,8 +48,7 @@ abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res>;
   $Res call(
-      {int id,
-      @JsonKey(name: 'access_token') String accessToken,
+      {@JsonKey(name: 'access_token') String accessToken,
       @JsonKey(name: 'expires_in') int expiresIn,
       @JsonKey(name: 'refresh_expires_in') int refreshExpiresIn,
       @JsonKey(name: 'refresh_token') String refreshToken,
@@ -69,7 +68,6 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? id = freezed,
     Object? accessToken = freezed,
     Object? expiresIn = freezed,
     Object? refreshExpiresIn = freezed,
@@ -80,10 +78,6 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
     Object? scope = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
       accessToken: accessToken == freezed
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
@@ -126,8 +120,7 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       __$$_UserCopyWithImpl<$Res>;
   @override
   $Res call(
-      {int id,
-      @JsonKey(name: 'access_token') String accessToken,
+      {@JsonKey(name: 'access_token') String accessToken,
       @JsonKey(name: 'expires_in') int expiresIn,
       @JsonKey(name: 'refresh_expires_in') int refreshExpiresIn,
       @JsonKey(name: 'refresh_token') String refreshToken,
@@ -148,7 +141,6 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? id = freezed,
     Object? accessToken = freezed,
     Object? expiresIn = freezed,
     Object? refreshExpiresIn = freezed,
@@ -159,10 +151,6 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
     Object? scope = freezed,
   }) {
     return _then(_$_User(
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
       accessToken: accessToken == freezed
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
@@ -203,8 +191,7 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_User implements _User {
   _$_User(
-      {required this.id,
-      @JsonKey(name: 'access_token') required this.accessToken,
+      {@JsonKey(name: 'access_token') required this.accessToken,
       @JsonKey(name: 'expires_in') required this.expiresIn,
       @JsonKey(name: 'refresh_expires_in') required this.refreshExpiresIn,
       @JsonKey(name: 'refresh_token') required this.refreshToken,
@@ -215,8 +202,7 @@ class _$_User implements _User {
 
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
 
-  @override
-  final int id;
+// required int id,
   @override
   @JsonKey(name: 'access_token')
   final String accessToken;
@@ -244,7 +230,7 @@ class _$_User implements _User {
 
   @override
   String toString() {
-    return 'User(id: $id, accessToken: $accessToken, expiresIn: $expiresIn, refreshExpiresIn: $refreshExpiresIn, refreshToken: $refreshToken, tokenType: $tokenType, notBeforePolicy: $notBeforePolicy, sessionState: $sessionState, scope: $scope)';
+    return 'User(accessToken: $accessToken, expiresIn: $expiresIn, refreshExpiresIn: $refreshExpiresIn, refreshToken: $refreshToken, tokenType: $tokenType, notBeforePolicy: $notBeforePolicy, sessionState: $sessionState, scope: $scope)';
   }
 
   @override
@@ -252,7 +238,6 @@ class _$_User implements _User {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_User &&
-            const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality()
                 .equals(other.accessToken, accessToken) &&
             const DeepCollectionEquality().equals(other.expiresIn, expiresIn) &&
@@ -272,7 +257,6 @@ class _$_User implements _User {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(accessToken),
       const DeepCollectionEquality().hash(expiresIn),
       const DeepCollectionEquality().hash(refreshExpiresIn),
@@ -297,8 +281,7 @@ class _$_User implements _User {
 
 abstract class _User implements User {
   factory _User(
-      {required final int id,
-      @JsonKey(name: 'access_token') required final String accessToken,
+      {@JsonKey(name: 'access_token') required final String accessToken,
       @JsonKey(name: 'expires_in') required final int expiresIn,
       @JsonKey(name: 'refresh_expires_in') required final int refreshExpiresIn,
       @JsonKey(name: 'refresh_token') required final String refreshToken,
@@ -309,9 +292,7 @@ abstract class _User implements User {
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
-  @override
-  int get id;
-  @override
+  @override // required int id,
   @JsonKey(name: 'access_token')
   String get accessToken;
   @override

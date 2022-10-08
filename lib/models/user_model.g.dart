@@ -7,7 +7,6 @@ part of 'user_model.dart';
 // **************************************************************************
 
 _$_User _$$_UserFromJson(Map<String, dynamic> json) => _$_User(
-      id: json['id'] as int,
       accessToken: json['access_token'] as String,
       expiresIn: json['expires_in'] as int,
       refreshExpiresIn: json['refresh_expires_in'] as int,
@@ -19,7 +18,6 @@ _$_User _$$_UserFromJson(Map<String, dynamic> json) => _$_User(
     );
 
 Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
-      'id': instance.id,
       'access_token': instance.accessToken,
       'expires_in': instance.expiresIn,
       'refresh_expires_in': instance.refreshExpiresIn,

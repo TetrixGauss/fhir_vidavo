@@ -7,7 +7,7 @@ part 'user_model.g.dart';
 @freezed
 class User with _$User {
   factory User({
-    required int id,
+    // required int id,
     @JsonKey(name: 'access_token') required String accessToken,
     @JsonKey(name: 'expires_in') required int expiresIn,
     @JsonKey(name: 'refresh_expires_in') required int refreshExpiresIn,
