@@ -63,7 +63,7 @@ class Http {
       var map = <String, String>{};
       map["Authorization"] = "Bearer $accessToken";
       map["Content-Type"] = "application/json";
-      var data = await http.post(Uri.parse(Api.hosmartPatientUrl), headers: map, body: patient.toJson());
+      var data = await http.post(Uri.parse(Api.hosmartPatientUrl), headers: map, body: jsonEncode(patient.toJson()));
       Map<String, dynamic> dataDecoded = jsonDecode(data.body);
       if(dataDecoded["resourceType"] == "Patient") {
         return ResponsePatient.fromJson(dataDecoded);
