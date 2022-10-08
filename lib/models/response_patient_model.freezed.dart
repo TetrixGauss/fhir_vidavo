@@ -20,7 +20,7 @@ ResponsePatient _$ResponsePatientFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ResponsePatient {
-  int get emmaId => throw _privateConstructorUsedError;
+// required int emmaId,
   @JsonKey(name: 'resourceType')
   String get resourceType => throw _privateConstructorUsedError;
   @JsonKey(name: 'id')
@@ -44,8 +44,7 @@ abstract class $ResponsePatientCopyWith<$Res> {
           ResponsePatient value, $Res Function(ResponsePatient) then) =
       _$ResponsePatientCopyWithImpl<$Res>;
   $Res call(
-      {int emmaId,
-      @JsonKey(name: 'resourceType') String resourceType,
+      {@JsonKey(name: 'resourceType') String resourceType,
       @JsonKey(name: 'id') String id,
       @JsonKey(name: 'meta') Meta meta,
       @JsonKey(name: 'text') Text text,
@@ -66,7 +65,6 @@ class _$ResponsePatientCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? emmaId = freezed,
     Object? resourceType = freezed,
     Object? id = freezed,
     Object? meta = freezed,
@@ -74,10 +72,6 @@ class _$ResponsePatientCopyWithImpl<$Res>
     Object? gender = freezed,
   }) {
     return _then(_value.copyWith(
-      emmaId: emmaId == freezed
-          ? _value.emmaId
-          : emmaId // ignore: cast_nullable_to_non_nullable
-              as int,
       resourceType: resourceType == freezed
           ? _value.resourceType
           : resourceType // ignore: cast_nullable_to_non_nullable
@@ -124,8 +118,7 @@ abstract class _$$_ResponsePatientCopyWith<$Res>
       __$$_ResponsePatientCopyWithImpl<$Res>;
   @override
   $Res call(
-      {int emmaId,
-      @JsonKey(name: 'resourceType') String resourceType,
+      {@JsonKey(name: 'resourceType') String resourceType,
       @JsonKey(name: 'id') String id,
       @JsonKey(name: 'meta') Meta meta,
       @JsonKey(name: 'text') Text text,
@@ -150,7 +143,6 @@ class __$$_ResponsePatientCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? emmaId = freezed,
     Object? resourceType = freezed,
     Object? id = freezed,
     Object? meta = freezed,
@@ -158,10 +150,6 @@ class __$$_ResponsePatientCopyWithImpl<$Res>
     Object? gender = freezed,
   }) {
     return _then(_$_ResponsePatient(
-      emmaId: emmaId == freezed
-          ? _value.emmaId
-          : emmaId // ignore: cast_nullable_to_non_nullable
-              as int,
       resourceType: resourceType == freezed
           ? _value.resourceType
           : resourceType // ignore: cast_nullable_to_non_nullable
@@ -190,8 +178,7 @@ class __$$_ResponsePatientCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ResponsePatient implements _ResponsePatient {
   _$_ResponsePatient(
-      {required this.emmaId,
-      @JsonKey(name: 'resourceType') required this.resourceType,
+      {@JsonKey(name: 'resourceType') required this.resourceType,
       @JsonKey(name: 'id') required this.id,
       @JsonKey(name: 'meta') required this.meta,
       @JsonKey(name: 'text') required this.text,
@@ -200,8 +187,7 @@ class _$_ResponsePatient implements _ResponsePatient {
   factory _$_ResponsePatient.fromJson(Map<String, dynamic> json) =>
       _$$_ResponsePatientFromJson(json);
 
-  @override
-  final int emmaId;
+// required int emmaId,
   @override
   @JsonKey(name: 'resourceType')
   final String resourceType;
@@ -220,7 +206,7 @@ class _$_ResponsePatient implements _ResponsePatient {
 
   @override
   String toString() {
-    return 'ResponsePatient(emmaId: $emmaId, resourceType: $resourceType, id: $id, meta: $meta, text: $text, gender: $gender)';
+    return 'ResponsePatient(resourceType: $resourceType, id: $id, meta: $meta, text: $text, gender: $gender)';
   }
 
   @override
@@ -228,7 +214,6 @@ class _$_ResponsePatient implements _ResponsePatient {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ResponsePatient &&
-            const DeepCollectionEquality().equals(other.emmaId, emmaId) &&
             const DeepCollectionEquality()
                 .equals(other.resourceType, resourceType) &&
             const DeepCollectionEquality().equals(other.id, id) &&
@@ -241,7 +226,6 @@ class _$_ResponsePatient implements _ResponsePatient {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(emmaId),
       const DeepCollectionEquality().hash(resourceType),
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(meta),
@@ -263,8 +247,7 @@ class _$_ResponsePatient implements _ResponsePatient {
 
 abstract class _ResponsePatient implements ResponsePatient {
   factory _ResponsePatient(
-          {required final int emmaId,
-          @JsonKey(name: 'resourceType') required final String resourceType,
+          {@JsonKey(name: 'resourceType') required final String resourceType,
           @JsonKey(name: 'id') required final String id,
           @JsonKey(name: 'meta') required final Meta meta,
           @JsonKey(name: 'text') required final Text text,
@@ -274,9 +257,7 @@ abstract class _ResponsePatient implements ResponsePatient {
   factory _ResponsePatient.fromJson(Map<String, dynamic> json) =
       _$_ResponsePatient.fromJson;
 
-  @override
-  int get emmaId;
-  @override
+  @override // required int emmaId,
   @JsonKey(name: 'resourceType')
   String get resourceType;
   @override

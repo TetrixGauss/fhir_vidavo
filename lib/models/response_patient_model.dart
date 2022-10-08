@@ -7,7 +7,7 @@ part 'response_patient_model.g.dart';
 class ResponsePatient with _$ResponsePatient {
 
   factory ResponsePatient({
-    required int emmaId,
+    // required int emmaId,
     @JsonKey(name: 'resourceType') required String resourceType,
     @JsonKey(name: 'id') required String id,
     @JsonKey(name: 'meta') required Meta meta,

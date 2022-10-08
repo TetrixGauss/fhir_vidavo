@@ -8,7 +8,6 @@ part of 'response_patient_model.dart';
 
 _$_ResponsePatient _$$_ResponsePatientFromJson(Map<String, dynamic> json) =>
     _$_ResponsePatient(
-      emmaId: json['emmaId'] as int,
       resourceType: json['resourceType'] as String,
       id: json['id'] as String,
       meta: Meta.fromJson(json['meta'] as Map<String, dynamic>),
@@ -18,7 +17,6 @@ _$_ResponsePatient _$$_ResponsePatientFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_ResponsePatientToJson(_$_ResponsePatient instance) =>
     <String, dynamic>{
-      'emmaId': instance.emmaId,
       'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta,
