@@ -19,10 +19,10 @@ class Http {
 
       var map = new Map<String, dynamic>();
       map["grant_type"] = "password";
-      map["client_id"] =  "imedphys-auth-test";
-      map["username"] = "parislagakis";
-      map["password"] =  "Mqp4fFwpBkNbUANc";
-      map["client_secret"] = "fe1d5329-9ef0-4b76-90e1-7392414cce6e";
+      map["client_id"] =  clientId;
+      map["username"] = username;
+      map["password"] =  password;
+      map["client_secret"] = clientSecret;
 
       var data = await http.post(Uri.parse(Api.hosmartAccessTokenUrl), headers: header, body: map);
 
@@ -37,12 +37,12 @@ class Http {
       }
     }
 
-    Future refreshToken(String refreshToken) async {
+    Future refreshToken(String refreshToken, String? clientId, String? clientSecret) async {
       var map = new Map<String, dynamic>();
       map["grant_type"] = "refresh_token";
-      map["client_id"] = "imedphys-auth-test";
+      map["client_id"] = clientId;
       map["refresh_token"] = refreshToken;
-      map["client_secret"] = "fe1d5329-9ef0-4b76-90e1-7392414cce6e";
+      map["client_secret"] = clientSecret;
 
       var data = await http.post(Uri.parse(Api.hosmartAccessTokenUrl), body: map);
       Map<String, dynamic> dataDecoded = jsonDecode(data.body);

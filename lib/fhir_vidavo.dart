@@ -42,7 +42,7 @@ class FHIRVidavo {
       String last_update,
       int danger_level,
       String covid_suspection,
-      int rssi,) async {
+      int rssi, String? clientId, String? clientSecret) async {
     _sp = await SharedPreferences.getInstance();
     String refreshToken = await _sp.getString("refresh_token")!;
 
@@ -51,7 +51,7 @@ class FHIRVidavo {
     DateTime dateTime = DateTime.parse(dateTimeStr);
     DateTime dateTimeForComparison = dateTime.add(Duration(seconds: 250));
     if(dateTimeForComparison.isBefore(DateTime.now())) {
-      User? tmp = await Http().refreshToken(refreshToken);
+      User? tmp = await Http().refreshToken(refreshToken, clientId, clientSecret);
       if(tmp != null) {
         _sp.setString("refresh_token", tmp.refreshToken);
         _sp.setString("access_token", tmp.accessToken);
