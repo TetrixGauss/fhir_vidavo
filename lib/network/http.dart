@@ -10,6 +10,9 @@ import 'package:http/http.dart' as http;
 class Http {
 
     Future getAccessToken(String? clientId, String? username, String? password, String? clientSecret) async {
+      var header = new Map<String, String>();
+      header["Content-Type"] = "application/x-www-form-urlencoded";
+
       var map = new Map<String, dynamic>();
       map["grant_type"] = "password";
       map["client_id"] = clientId ?? "imedphys-auth-test";
@@ -17,7 +20,7 @@ class Http {
       map["password"] = password ?? "Mqp4fFwpBkNbUANc";
       map["client_secret"] = clientSecret ?? "fe1d5329-9ef0-4b76-90e1-7392414cce6e";
 
-      var data = await http.post(Uri.parse(Api.hosmartAccessTokenUrl), body: map);
+      var data = await http.post(Uri.parse(Api.hosmartAccessTokenUrl), headers: header, body: map);
       Map<String, dynamic> dataDecoded = jsonDecode(data.body);
 
       if(dataDecoded["access_token"] != null ) {
