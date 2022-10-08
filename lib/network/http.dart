@@ -6,10 +6,14 @@ import 'package:fhir_vidavo/models/response_patient_model.dart';
 import 'package:fhir_vidavo/models/user_model.dart';
 import 'package:fhir_vidavo/utils/api.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Http {
 
     Future getAccessToken(String? clientId, String? username, String? password, String? clientSecret) async {
+      SharedPreferences _sp = await SharedPreferences.getInstance();
+
+
       var header = new Map<String, String>();
       header["Content-Type"] = "application/x-www-form-urlencoded";
 
@@ -33,11 +37,11 @@ class Http {
       }
     }
 
-    Future refreshToken(User user) async {
+    Future refreshToken(String refreshToken) async {
       var map = new Map<String, dynamic>();
       map["grant_type"] = "refresh_token";
       map["client_id"] = "imedphys-auth-test";
-      map["refresh_token"] = user.refreshToken;
+      map["refresh_token"] = refreshToken;
       map["client_secret"] = "fe1d5329-9ef0-4b76-90e1-7392414cce6e";
 
       var data = await http.post(Uri.parse(Api.hosmartAccessTokenUrl), body: map);
@@ -55,9 +59,9 @@ class Http {
 
     }
 
-    Future postPatient(User user, Patient patient) async {
+    Future postPatient(String accessToken, Patient patient) async {
       var map = <String, String>{};
-      map["Authorization"] = "Bearer ${user.accessToken}";
+      map["Authorization"] = "Bearer $accessToken";
       map["Content-Type"] = "application/json";
       var data = await http.post(Uri.parse(Api.hosmartPatientUrl), headers: map, body: patient.toJson());
       Map<String, dynamic> dataDecoded = jsonDecode(data.body);

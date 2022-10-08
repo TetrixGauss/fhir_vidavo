@@ -20,7 +20,8 @@ class FHIRVidavo {
     _user =
     await Http().getAccessToken(clientId, username, password, clientSecret);
     if (_user != null) {
-
+      _sp.setString("refresh_token", _user!.refreshToken);
+      _sp.setString("access_token", _user!.accessToken);
     }
   }
 
@@ -43,20 +44,23 @@ class FHIRVidavo {
       String covid_suspection,
       int rssi,) async {
     _sp = await SharedPreferences.getInstance();
+    String refreshToken = await _sp.getString("refresh_token")!;
+
     String dateTimeStr = await _sp.getString("fhir_token")!;
     log(dateTimeStr);
     DateTime dateTime = DateTime.parse(dateTimeStr);
     DateTime dateTimeForComparison = dateTime.add(Duration(seconds: 250));
-    if(dateTimeForComparison.isAfter(DateTime.now())) {
-      User? tmp = await Http().refreshToken(_user!);
+    if(dateTimeForComparison.isBefore(DateTime.now())) {
+      User? tmp = await Http().refreshToken(refreshToken);
       if(tmp != null) {
-        _user = tmp;
+        _sp.setString("refresh_token", tmp.refreshToken);
+        _sp.setString("access_token", tmp.accessToken);
       } else {
         log("createPatient: Fail to refresh");
         return null;
       }
     }
-    
+    String accessToken = await _sp.getString("access_token")!;
     Patient patient = Patient(firstname: firstname,
         lastname: lastname,
         external_device_mac: external_device_mac,
@@ -77,7 +81,7 @@ class FHIRVidavo {
         rssi: rssi,
         resourceType: "Patient");
     
-      ResponsePatient? response = await Http().postPatient(_user!, patient);
+      ResponsePatient? response = await Http().postPatient(accessToken, patient);
       
       if(response != null) {
         return response.id;
