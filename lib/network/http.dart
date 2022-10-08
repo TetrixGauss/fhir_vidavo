@@ -15,12 +15,14 @@ class Http {
 
       var map = new Map<String, dynamic>();
       map["grant_type"] = "password";
-      map["client_id"] = clientId ?? "imedphys-auth-test";
-      map["username"] = username ?? "parislagakis";
-      map["password"] = password ?? "Mqp4fFwpBkNbUANc";
+      map["client_id"] =  "imedphys-auth-test";
+      map["username"] = "parislagakis";
+      map["password"] =  "Mqp4fFwpBkNbUANc";
       map["client_secret"] = clientSecret ?? "fe1d5329-9ef0-4b76-90e1-7392414cce6e";
 
       var data = await http.post(Uri.parse(Api.hosmartAccessTokenUrl), headers: header, body: map);
+
+      log(data.toString());
       Map<String, dynamic> dataDecoded = jsonDecode(data.body);
 
       if(dataDecoded["access_token"] != null ) {
