@@ -11,26 +11,19 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages). 
 -->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+## FHIR
+link: https://fhir.org/
 
-## Features
+As long as you have your credentials for the platform, this package gives you 
+the ability to connect and follow the protocol in order to create a patient's 
+record in FHIR platform and publish there the patient's vitals and their results.
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+## Guidance
 
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
-
-```dart
-const like = 'sample';
-```
+With the init() method the application can have access to the account regarding 
+the provided credentials.
+The createPatient() method creates the patient's record to the platform.
+The postVitals() method posts the vitals for the specific patient to the platform.
 
 ### For Drift and freezed set up:
 * run -> flutter pub run build_runner build watch --delete-conflicting-outputs
