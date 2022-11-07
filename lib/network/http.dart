@@ -10,6 +10,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class Http {
 
+  Http();
+
+
     Future getAccessToken(String? clientId, String? username, String? password, String? clientSecret) async {
       SharedPreferences _sp = await SharedPreferences.getInstance();
 
@@ -66,6 +69,8 @@ class Http {
       var data = await http.post(Uri.parse(Api.hosmartPatientUrl), headers: map, body: jsonEncode(patient.toJson()));
       Map<String, dynamic> dataDecoded = jsonDecode(data.body);
       if(dataDecoded["resourceType"] == "Patient") {
+        log("FHIR - LOG - POST PATIENT");
+        log(dataDecoded.toString());
         return ResponsePatient.fromJson(dataDecoded);
       } else {
         log("postPatient");

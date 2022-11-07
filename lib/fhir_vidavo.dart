@@ -97,5 +97,10 @@ class FHIRVidavo {
     return Http().postVital(variable, patientId, value, timeStamp);
   }
 
+  Http http = Http();
+
+  method()  {
+    http.getPatient();
+  }
 
 }
