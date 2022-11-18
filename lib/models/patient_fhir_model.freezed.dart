@@ -23,6 +23,8 @@ mixin _$PatientFHIR {
 // required int id,
   @JsonKey(name: 'name')
   List<Name>? get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'contact')
+  List<Contact>? get contact => throw _privateConstructorUsedError;
   @JsonKey(name: 'birthDate')
   DateTime get birthDate => throw _privateConstructorUsedError;
   @JsonKey(name: 'gender')
@@ -43,6 +45,7 @@ abstract class $PatientFHIRCopyWith<$Res> {
       _$PatientFHIRCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'name') List<Name>? name,
+      @JsonKey(name: 'contact') List<Contact>? contact,
       @JsonKey(name: 'birthDate') DateTime birthDate,
       @JsonKey(name: 'gender') String gender,
       @JsonKey(name: 'resourceType') String resourceType});
@@ -59,6 +62,7 @@ class _$PatientFHIRCopyWithImpl<$Res> implements $PatientFHIRCopyWith<$Res> {
   @override
   $Res call({
     Object? name = freezed,
+    Object? contact = freezed,
     Object? birthDate = freezed,
     Object? gender = freezed,
     Object? resourceType = freezed,
@@ -68,6 +72,10 @@ class _$PatientFHIRCopyWithImpl<$Res> implements $PatientFHIRCopyWith<$Res> {
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as List<Name>?,
+      contact: contact == freezed
+          ? _value.contact
+          : contact // ignore: cast_nullable_to_non_nullable
+              as List<Contact>?,
       birthDate: birthDate == freezed
           ? _value.birthDate
           : birthDate // ignore: cast_nullable_to_non_nullable
@@ -93,6 +101,7 @@ abstract class _$$_PatientFHIRCopyWith<$Res>
   @override
   $Res call(
       {@JsonKey(name: 'name') List<Name>? name,
+      @JsonKey(name: 'contact') List<Contact>? contact,
       @JsonKey(name: 'birthDate') DateTime birthDate,
       @JsonKey(name: 'gender') String gender,
       @JsonKey(name: 'resourceType') String resourceType});
@@ -111,6 +120,7 @@ class __$$_PatientFHIRCopyWithImpl<$Res> extends _$PatientFHIRCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = freezed,
+    Object? contact = freezed,
     Object? birthDate = freezed,
     Object? gender = freezed,
     Object? resourceType = freezed,
@@ -120,6 +130,10 @@ class __$$_PatientFHIRCopyWithImpl<$Res> extends _$PatientFHIRCopyWithImpl<$Res>
           ? _value._name
           : name // ignore: cast_nullable_to_non_nullable
               as List<Name>?,
+      contact: contact == freezed
+          ? _value._contact
+          : contact // ignore: cast_nullable_to_non_nullable
+              as List<Contact>?,
       birthDate: birthDate == freezed
           ? _value.birthDate
           : birthDate // ignore: cast_nullable_to_non_nullable
@@ -141,10 +155,12 @@ class __$$_PatientFHIRCopyWithImpl<$Res> extends _$PatientFHIRCopyWithImpl<$Res>
 class _$_PatientFHIR implements _PatientFHIR {
   _$_PatientFHIR(
       {@JsonKey(name: 'name') required final List<Name>? name,
+      @JsonKey(name: 'contact') required final List<Contact>? contact,
       @JsonKey(name: 'birthDate') required this.birthDate,
       @JsonKey(name: 'gender') required this.gender,
       @JsonKey(name: 'resourceType') required this.resourceType})
-      : _name = name;
+      : _name = name,
+        _contact = contact;
 
   factory _$_PatientFHIR.fromJson(Map<String, dynamic> json) =>
       _$$_PatientFHIRFromJson(json);
@@ -156,6 +172,16 @@ class _$_PatientFHIR implements _PatientFHIR {
   @JsonKey(name: 'name')
   List<Name>? get name {
     final value = _name;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<Contact>? _contact;
+  @override
+  @JsonKey(name: 'contact')
+  List<Contact>? get contact {
+    final value = _contact;
     if (value == null) return null;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
@@ -173,7 +199,7 @@ class _$_PatientFHIR implements _PatientFHIR {
 
   @override
   String toString() {
-    return 'PatientFHIR(name: $name, birthDate: $birthDate, gender: $gender, resourceType: $resourceType)';
+    return 'PatientFHIR(name: $name, contact: $contact, birthDate: $birthDate, gender: $gender, resourceType: $resourceType)';
   }
 
   @override
@@ -182,6 +208,7 @@ class _$_PatientFHIR implements _PatientFHIR {
         (other.runtimeType == runtimeType &&
             other is _$_PatientFHIR &&
             const DeepCollectionEquality().equals(other._name, _name) &&
+            const DeepCollectionEquality().equals(other._contact, _contact) &&
             const DeepCollectionEquality().equals(other.birthDate, birthDate) &&
             const DeepCollectionEquality().equals(other.gender, gender) &&
             const DeepCollectionEquality()
@@ -193,6 +220,7 @@ class _$_PatientFHIR implements _PatientFHIR {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_name),
+      const DeepCollectionEquality().hash(_contact),
       const DeepCollectionEquality().hash(birthDate),
       const DeepCollectionEquality().hash(gender),
       const DeepCollectionEquality().hash(resourceType));
@@ -213,6 +241,7 @@ class _$_PatientFHIR implements _PatientFHIR {
 abstract class _PatientFHIR implements PatientFHIR {
   factory _PatientFHIR(
           {@JsonKey(name: 'name') required final List<Name>? name,
+          @JsonKey(name: 'contact') required final List<Contact>? contact,
           @JsonKey(name: 'birthDate') required final DateTime birthDate,
           @JsonKey(name: 'gender') required final String gender,
           @JsonKey(name: 'resourceType') required final String resourceType}) =
@@ -224,6 +253,9 @@ abstract class _PatientFHIR implements PatientFHIR {
   @override // required int id,
   @JsonKey(name: 'name')
   List<Name>? get name;
+  @override
+  @JsonKey(name: 'contact')
+  List<Contact>? get contact;
   @override
   @JsonKey(name: 'birthDate')
   DateTime get birthDate;
@@ -426,4 +458,155 @@ abstract class _Name implements Name {
   @override
   @JsonKey(ignore: true)
   _$$_NameCopyWith<_$_Name> get copyWith => throw _privateConstructorUsedError;
+}
+
+Contact _$ContactFromJson(Map<String, dynamic> json) {
+  return _Contact.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Contact {
+// required int id,
+  @JsonKey(name: 'organization')
+  OrganizationFHIR? get organization => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ContactCopyWith<Contact> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ContactCopyWith<$Res> {
+  factory $ContactCopyWith(Contact value, $Res Function(Contact) then) =
+      _$ContactCopyWithImpl<$Res>;
+  $Res call({@JsonKey(name: 'organization') OrganizationFHIR? organization});
+
+  $OrganizationFHIRCopyWith<$Res>? get organization;
+}
+
+/// @nodoc
+class _$ContactCopyWithImpl<$Res> implements $ContactCopyWith<$Res> {
+  _$ContactCopyWithImpl(this._value, this._then);
+
+  final Contact _value;
+  // ignore: unused_field
+  final $Res Function(Contact) _then;
+
+  @override
+  $Res call({
+    Object? organization = freezed,
+  }) {
+    return _then(_value.copyWith(
+      organization: organization == freezed
+          ? _value.organization
+          : organization // ignore: cast_nullable_to_non_nullable
+              as OrganizationFHIR?,
+    ));
+  }
+
+  @override
+  $OrganizationFHIRCopyWith<$Res>? get organization {
+    if (_value.organization == null) {
+      return null;
+    }
+
+    return $OrganizationFHIRCopyWith<$Res>(_value.organization!, (value) {
+      return _then(_value.copyWith(organization: value));
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$_ContactCopyWith<$Res> implements $ContactCopyWith<$Res> {
+  factory _$$_ContactCopyWith(
+          _$_Contact value, $Res Function(_$_Contact) then) =
+      __$$_ContactCopyWithImpl<$Res>;
+  @override
+  $Res call({@JsonKey(name: 'organization') OrganizationFHIR? organization});
+
+  @override
+  $OrganizationFHIRCopyWith<$Res>? get organization;
+}
+
+/// @nodoc
+class __$$_ContactCopyWithImpl<$Res> extends _$ContactCopyWithImpl<$Res>
+    implements _$$_ContactCopyWith<$Res> {
+  __$$_ContactCopyWithImpl(_$_Contact _value, $Res Function(_$_Contact) _then)
+      : super(_value, (v) => _then(v as _$_Contact));
+
+  @override
+  _$_Contact get _value => super._value as _$_Contact;
+
+  @override
+  $Res call({
+    Object? organization = freezed,
+  }) {
+    return _then(_$_Contact(
+      organization: organization == freezed
+          ? _value.organization
+          : organization // ignore: cast_nullable_to_non_nullable
+              as OrganizationFHIR?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_Contact implements _Contact {
+  _$_Contact({@JsonKey(name: 'organization') required this.organization});
+
+  factory _$_Contact.fromJson(Map<String, dynamic> json) =>
+      _$$_ContactFromJson(json);
+
+// required int id,
+  @override
+  @JsonKey(name: 'organization')
+  final OrganizationFHIR? organization;
+
+  @override
+  String toString() {
+    return 'Contact(organization: $organization)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Contact &&
+            const DeepCollectionEquality()
+                .equals(other.organization, organization));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(organization));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_ContactCopyWith<_$_Contact> get copyWith =>
+      __$$_ContactCopyWithImpl<_$_Contact>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ContactToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Contact implements Contact {
+  factory _Contact(
+      {@JsonKey(name: 'organization')
+          required final OrganizationFHIR? organization}) = _$_Contact;
+
+  factory _Contact.fromJson(Map<String, dynamic> json) = _$_Contact.fromJson;
+
+  @override // required int id,
+  @JsonKey(name: 'organization')
+  OrganizationFHIR? get organization;
+  @override
+  @JsonKey(ignore: true)
+  _$$_ContactCopyWith<_$_Contact> get copyWith =>
+      throw _privateConstructorUsedError;
 }

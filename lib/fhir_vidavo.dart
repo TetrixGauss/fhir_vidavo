@@ -2,6 +2,7 @@ library fhir_vidavo;
 
 import 'dart:developer';
 
+import 'package:fhir_vidavo/models/organization_fhir_model.dart';
 import 'package:fhir_vidavo/models/patient_fhir_model.dart';
 import 'package:fhir_vidavo/models/patient_model.dart';
 import 'package:fhir_vidavo/models/response_patient_model.dart';
@@ -64,7 +65,13 @@ class FHIRVidavo {
     String accessToken = await _sp.getString("access_token")!;
 
     Name name = Name(use: "official", family: lastname, given: [firstname]);
-    PatientFHIR patientFHIR = PatientFHIR(name: [name], birthDate: DateTime.parse(dob), gender: gender, resourceType: "Patient");
+    Telecom telecom1 = Telecom(system: "phone", value: "+306978098965", use: "mobile");
+    Telecom telecom2 = Telecom(system: "email", value: "alexis.fourlis@emmatriage.com", use: "work");
+
+    Identifier identifier = Identifier(system: "https://www.emmatriage.com/", value: "EMMA");
+    OrganizationFHIR organizationFHIR = OrganizationFHIR(name:  "EMMA - Emergency Clinical Support", id: "256", telecom: [telecom1, telecom2], identifier: [identifier], resourceType: "Organization");
+    Contact contact = Contact(organization: organizationFHIR);
+    PatientFHIR patientFHIR = PatientFHIR(name: [name], birthDate: DateTime.parse(dob), gender: gender, resourceType: "Patient", contact: [contact]);
     Patient patient = Patient(firstname: firstname,
         lastname: lastname,
         external_device_mac: external_device_mac,

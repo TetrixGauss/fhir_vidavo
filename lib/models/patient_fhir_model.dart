@@ -1,3 +1,4 @@
+import 'package:fhir_vidavo/models/organization_fhir_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'patient_fhir_model.freezed.dart';
@@ -8,6 +9,7 @@ class PatientFHIR with _$PatientFHIR {
   factory PatientFHIR({
     // required int id,
     @JsonKey(name: 'name') required List<Name>? name,
+    @JsonKey(name: 'contact') required List<Contact>? contact,
     @JsonKey(name: 'birthDate') required DateTime birthDate,
     @JsonKey(name: 'gender') required String gender,
     @JsonKey(name: 'resourceType')
@@ -27,4 +29,14 @@ class Name with _$Name {
   }) = _Name;
 
   factory Name.fromJson(Map<String, dynamic> json) => _$NameFromJson(json);
+}
+
+@freezed
+class Contact with _$Contact {
+  factory Contact({
+    // required int id,
+    @JsonKey(name: 'organization') required OrganizationFHIR? organization,
+  }) = _Contact;
+
+  factory Contact.fromJson(Map<String, dynamic> json) => _$ContactFromJson(json);
 }
