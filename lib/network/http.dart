@@ -69,6 +69,29 @@ class Http {
       map["Content-Type"] = "application/json";
       late var data;
       if (patient == null) {
+        var organizationMAp = {};
+        organizationMAp["resourceType"] = "Organization";
+        organizationMAp["id"] = "256";
+        organizationMAp["name"] = "EMMA - Emergency Clinical Support";
+        var identifierMAp = {};
+        identifierMAp["system"] = "https://www.emmatriage.com/";
+        identifierMAp["value"] = "EMMA";
+        organizationMAp["identifier"] = jsonEncode([identifierMAp]);
+
+        var telecom1MAp = {};
+        telecom1MAp["system"] = "phone";
+        telecom1MAp["value"] = "+306978098965";
+        telecom1MAp["use"] = "mobile";
+        var telecom2MAp = {};
+        telecom2MAp["system"] = "email";
+        telecom2MAp["value"] = "alexis.fourlis@emmatriage.com";
+        telecom2MAp["use"] = "work";
+        organizationMAp["telecom"] = jsonEncode([telecom1MAp, telecom2MAp]);
+        var mapPatient = patientFHIR!.toJson();
+        var contact = {};
+        contact["organization"] = organizationMAp;
+        mapPatient["contact"] = jsonEncode([contact]);
+
         data = await http.post(Uri.parse(Api.hosmartPatientUrl), headers: map, body: jsonEncode(patientFHIR!.toJson()));
       } else {
         data = await http.post(Uri.parse(Api.hosmartPatientUrl), headers: map, body: jsonEncode(patient.toJson()));
