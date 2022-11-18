@@ -92,7 +92,7 @@ class Http {
         contact["organization"] = organizationMAp;
         mapPatient["contact"] = jsonEncode([contact]);
 
-        data = await http.post(Uri.parse(Api.hosmartPatientUrl), headers: map, body: jsonEncode(patientFHIR!.toJson()));
+        data = await http.post(Uri.parse(Api.hosmartPatientUrl), headers: map, body: jsonEncode(mapPatient));
       } else {
         data = await http.post(Uri.parse(Api.hosmartPatientUrl), headers: map, body: jsonEncode(patient.toJson()));
       }
