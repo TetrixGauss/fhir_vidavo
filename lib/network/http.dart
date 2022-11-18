@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:fhir_vidavo/models/patient_fhir_model.dart';
 import 'package:fhir_vidavo/models/patient_model.dart';
 import 'package:fhir_vidavo/models/response_patient_model.dart';
 import 'package:fhir_vidavo/models/user_model.dart';
@@ -62,11 +63,16 @@ class Http {
 
     }
 
-    Future postPatient(String accessToken, Patient patient) async {
+    Future postPatient(String accessToken, Patient? patient, PatientFHIR? patientFHIR) async {
       var map = <String, String>{};
       map["Authorization"] = "Bearer $accessToken";
       map["Content-Type"] = "application/json";
-      var data = await http.post(Uri.parse(Api.hosmartPatientUrl), headers: map, body: jsonEncode(patient.toJson()));
+      late var data;
+      if (patient == null) {
+        data = await http.post(Uri.parse(Api.hosmartPatientUrl), headers: map, body: jsonEncode(patientFHIR!.toJson()));
+      } else {
+        data = await http.post(Uri.parse(Api.hosmartPatientUrl), headers: map, body: jsonEncode(patient.toJson()));
+      }
       Map<String, dynamic> dataDecoded = jsonDecode(data.body);
       if(dataDecoded["resourceType"] == "Patient") {
         log("FHIR - LOG - POST PATIENT");

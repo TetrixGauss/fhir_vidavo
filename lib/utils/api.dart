@@ -9,3 +9,4 @@ class Api {
   static String hosmartAccessTokenUrl = "https://hhub.hosmartai.eu/auth/realms/jhub/protocol/openid-connect/token";
   static String hosmartPatientUrl = "${hosmartBaseUrl}fhir/Patient";
 }
+

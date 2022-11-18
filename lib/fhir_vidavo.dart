@@ -2,6 +2,7 @@ library fhir_vidavo;
 
 import 'dart:developer';
 
+import 'package:fhir_vidavo/models/patient_fhir_model.dart';
 import 'package:fhir_vidavo/models/patient_model.dart';
 import 'package:fhir_vidavo/models/response_patient_model.dart';
 import 'package:fhir_vidavo/models/user_model.dart';
@@ -61,6 +62,9 @@ class FHIRVidavo {
       }
     }
     String accessToken = await _sp.getString("access_token")!;
+
+    Name name = Name(use: "official", family: lastname, given: [firstname]);
+    PatientFHIR patientFHIR = PatientFHIR(name: [name], birthDate: DateTime.parse(dob), gender: gender, resourceType: "Patient");
     Patient patient = Patient(firstname: firstname,
         lastname: lastname,
         external_device_mac: external_device_mac,
@@ -81,7 +85,7 @@ class FHIRVidavo {
         rssi: rssi,
         resourceType: "Patient");
     
-      ResponsePatient? response = await Http().postPatient(accessToken, patient);
+      ResponsePatient? response = await Http().postPatient(accessToken, null, patientFHIR);
       
       if(response != null) {
         return response.id;

@@ -19,17 +19,4 @@ class User with _$User {
   }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
-
-//
-// factory User.fromDB(db.User user) {
-//   return User(
-//       id: user.id,
-//       userHash: user.userHash,
-//       firstname: user.firstname ,
-//       lastname: user.lastname ,
-//       secureKey: user.secureKey ,
-//       userName: user.userName ,
-//       approval: user.approval ,
-//       email: user.email, token: user.token, hospital: user.hospital );
-// }
 }
