@@ -32,6 +32,8 @@ class Http {
 
       log(data.toString());
       Map<String, dynamic> dataDecoded = jsonDecode(data.body);
+      log("Response for FHIR init");
+      log(dataDecoded.toString());
 
       if(dataDecoded["access_token"] != null ) {
         return User.fromJson(dataDecoded);
@@ -103,6 +105,8 @@ class Http {
         return ResponsePatient.fromJson(dataDecoded);
       } else {
         log("postPatient");
+        log(dataDecoded.toString());
+
         return null;
       }
     }
